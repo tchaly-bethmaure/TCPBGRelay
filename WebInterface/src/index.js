@@ -85,6 +85,6 @@ class OnlineGBGame extends React.Component {
 // ========================================
 
 ReactDOM.render(
-  <OnlineTetris />,
+  <OnlineGBGame />,
   document.getElementById('root')
 );
