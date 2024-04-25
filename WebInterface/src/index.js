@@ -11,35 +11,44 @@ import { GBWebsocket } from './gbwebsocket.js';
 global.jQuery = require('jquery');
 require('bootstrap');
 
+const MAXCONNECTION = 2;
+const HOSTSTATIC = "192.168.144.4"; 
+var PLAYERNUMBER = 0;
 
 class OnlineGBGame extends React.Component {
   handleConnectCreateClick() {
-    this.ws = GBWebsocket("ws://CNAMEHERE/create");
-    this.serial = new Serial();
-    this.serial.getDevice().then(() => {
-      console.log("Usb connected, updating status.");
-      this.initiateConnection();
-    }).catch(c => {
-      console.log("CATTTCH");
-    });
+    if(PLAYERNUMBER < MAXCONNECTION){
+      PLAYERNUMBER += 1;
+      this.ws = GBWebsocket("ws://"+HOSTSTATIC+"/create");
+      this.serial = new Serial();
+      this.serial.getDevice().then(() => {
+        console.log("Usb connected, updating status.");
+        this.initiateConnection();
+      }).catch(c => {
+        console.log("CATTTCH");
+      });
+    }
   }
 
   handleConnectJoinClick() {
-    this.ws = GBWebsocket("ws://CNAMEHERE/join");
-    this.serial = new Serial();
-    this.serial.getDevice().then(() => {
-      console.log("Usb connected, updating status.");
-      this.connection();
-    }).catch(c => {
-      console.log("CATTTCH");
-    });
+    if(PLAYERNUMBER < MAXCONNECTION){
+      PLAYERNUMBER += 1;
+      this.ws = GBWebsocket("ws://"+HOSTSTATIC+"/join");
+      this.serial = new Serial();
+      this.serial.getDevice().then(() => {
+        console.log("Usb connected, updating status.");
+        this.connection();
+      }).catch(c => {
+        console.log("CATTTCH");
+      });
+    }
   }
 
   connection() {
     console.log("Attempt connection...");
     this.serial.receiveFromOtherGB(this.ws.read());
-    this.serial.receiveFromMyGB(this.serial.read());
     this.serial.sendToMyGB();
+    this.serial.receiveFromMyGB(this.serial.read());
     this.serial.sendToOtherGB();
   }
 

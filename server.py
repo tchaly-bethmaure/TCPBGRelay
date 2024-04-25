@@ -1,5 +1,4 @@
 from websockets.server import serve
-from threading import Thread
 import asyncio
 from time import sleep
 
@@ -36,7 +35,7 @@ async def serve_for_good(websocket):
     await c.run()
 
 async def main():
-    async with serve(serve_for_good, "192.168.1.1", 7777):
+    async with serve(serve_for_good, "0.0.0.0", 7777):
         await asyncio.Future() # loop
 asyncio.run(main())
 
