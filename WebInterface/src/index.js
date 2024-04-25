@@ -59,8 +59,8 @@ class OnlineGBGame extends React.Component {
 
           <div className="connect">
             <img src={process.env.PUBLIC_URL + '/images/animation.gif'} className="gameboy" />
-            <h2 className="cover-heading">Tetrilink</h2>
-            <p className="lead">Connect your Game Boy, boot Tetris, and start playing with your friends!</p>
+            <h2 className="cover-heading">GameBoylinki</h2>
+            <p className="lead">Connect your Game Boy, boot Games, and start playing with your friends!</p>
             <hr />
             <h4>Connect your Game Boy</h4>
             <p>Connect your Game Boy with the USB to Game Link adapter and click "connect".</p>
