@@ -1,2 +1,2 @@
-# TCPBGRelay
-A TCP Relay for GameBoy
+# A modern relay for playing Gameboy over internet
+Reworked from StackSmashing works.
