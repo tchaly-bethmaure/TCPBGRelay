@@ -14,7 +14,7 @@ require('bootstrap');
 
 class OnlineGBGame extends React.Component {
   handleConnectCreateClick() {
-    this.ws = GBWebsocket("ws://192.168.1.1/create");
+    this.ws = GBWebsocket("ws://CNAMEHERE/create");
     this.serial = new Serial();
     this.serial.getDevice().then(() => {
       console.log("Usb connected, updating status.");
@@ -25,7 +25,7 @@ class OnlineGBGame extends React.Component {
   }
 
   handleConnectJoinClick() {
-    this.ws = GBWebsocket("ws://192.168.1.1/join");
+    this.ws = GBWebsocket("ws://CNAMEHERE/join");
     this.serial = new Serial();
     this.serial.getDevice().then(() => {
       console.log("Usb connected, updating status.");
